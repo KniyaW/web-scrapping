@@ -5,6 +5,7 @@ from io import StringIO
 import pandas as pd
 import time
 
+# Scrapes game scores for a single NBA season
 def single_game_scores(season):
     """
     Scrapes game scores for a single NBA season.
@@ -29,6 +30,7 @@ def single_game_scores(season):
 
     return df
 
+# Function to sleep to avoid too many requests error 
 def multiple_game_scores(start_year, end_year):
     """
     Scrapes game scores for multiple NBA seasons.

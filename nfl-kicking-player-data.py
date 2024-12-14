@@ -5,7 +5,7 @@ from io import StringIO
 import pandas as pd
 import time
 
-##code below grabbed from https://raihanafiandi.medium.com/scraping-basketball-reference-data-using-python-f321c3f2903e
+# Scrapes Kicker data for a single NFL season
 def single(season):
     url = f'https://www.pro-football-reference.com/years/{season}/kicking.htm'
     table_html = BeautifulSoup(urlopen(url), 'html.parser').findAll('table')
@@ -28,7 +28,7 @@ def single(season):
     return df
 
 
-##function taken from same link above, altered to sleep to avoid too many requests error 
+# Function to sleep to avoid too many requests error  
 def multiple(start_year, end_year):
     df = single(start_year)
     for year in range(start_year + 1, end_year):  # More efficient looping
@@ -36,7 +36,7 @@ def multiple(start_year, end_year):
         df = pd.concat([df, single(year)], ignore_index=True)  # Use concat
     return df
 
-##calling for all NFL seasons data except current(1949-50 until 2021-22) as current season is not yet finished
+# Call the function for seasons from 2004 to 2023 (end_year is exclusive)
 df = multiple(2004, 2024)
 
 # More robust filtering to remove repeated headers

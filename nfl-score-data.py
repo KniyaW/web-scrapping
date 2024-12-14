@@ -5,6 +5,7 @@ from io import StringIO
 import pandas as pd
 import time
 
+## Scrapes game scores for a single NFL season
 def single_game_scores(season):
     """
     Scrapes game scores for a single NFL season.
